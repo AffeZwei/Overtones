@@ -109,6 +109,11 @@ function updateVolume() {
     }
 }
 
+function formatValue(input, value) {
+    const decimals = (input.step.split(".")[1] || "").length;
+    return value.toFixed(decimals);
+}
+
 function changeValue(input, amount) {
 
     const step = Number(input.step) || 1;
@@ -120,7 +125,7 @@ function changeValue(input, amount) {
 
     value = Math.max(min, value);
 
-    input.value = value.toFixed(2);
+    input.value = formatValue(input, value);
 
     updateDisplay();
 
